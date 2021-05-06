@@ -11,7 +11,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of productCart">
+              <tr *ngFor="let item of productCart; let i = index;">
                   <td>
                     <button type="button" class="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -21,9 +21,9 @@
                 <td>{{item.price}}</td>
                 <td>
                     <div class="number">
-                        <span class="minus">-</span>
-                        <input type="text" value="1"/>
-                        <span class="plus">+</span>
+                        <span class="minus" (click)="updateProductCart('minus',i)">-</span>
+                        <input type="text" disabled value="{{item.quantity}}"/>
+                        <span class="plus" (click)="updateProductCart('plus',i)">+</span>
                     </div>
                 </td>
                 <td>{{item.total}}</td>
@@ -35,24 +35,24 @@
         <!-- process -->
         <div class="calculate">
             <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                  </tr>
-                </thead>
+                <!-- <thead>
+                </thead> -->
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">00</th>
                   </tr>
                   <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
+                    <th scope="row">VAT Tax</th>
+                    <td>n/a</td>
                   </tr>
                   <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
+                    <th scope="row">Discount</th>
+                    <td>n/a</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total</th>
+                    <td>00 eu</td>
                   </tr>
                 </tbody>
               </table>
