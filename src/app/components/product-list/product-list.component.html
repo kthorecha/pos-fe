@@ -1,0 +1,21 @@
+<div class="main-list">
+    <!-- <div class="tab">
+        <button class="tablinks" *ngFor="let c of productCategory" value="{{c.categoryName}}" id="defaultOpen">{{c.categoryName}}</button>
+      </div> -->
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-target=".tab-pane" (click)="showTabContent('all')">All</a></li>
+        <li *ngFor="let c of productCategory; let i = index" (click)="showTabContent(c.categoryName)"><a>{{c.categoryName}}</a></li>
+        <!-- <li><a data-target="#tab2" data-toggle="tab">Tab 2</a></li> -->
+    </ul>
+    <div class="tab-content" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <div *ngFor="let t of currentTabList; let i = index" id="tab{{i}}" class="tab-pane card bg-light mb-3" style="max-width: 10rem;">
+            <div class="card-header">{{t.name}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{t.unit_price}}</h5>
+              <p class="card-text">{{t.description}}</p>
+            </div>
+          </div>
+        <!-- <div *ngFor="let t of currentTabList; let i = index" id="tab{{i}}" class="tab-pane">{{t.productName}}</div> -->
+        <!-- <div id="tab-c" class="tab-pane active">Yup, yup, this is Tab 2.</div> -->
+    </div>
+</div>
